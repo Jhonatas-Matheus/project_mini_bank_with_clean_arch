@@ -5,7 +5,7 @@ import { AccountsRepository } from "../../../../../domain/repositories/accounts.
 import { postgresAccountRepository, postgresTransferRepository } from "../app";
 
 export class CreateTransferController {
-  // constructor(private createTransferUseCase: CreateTransferUseCase()){}
+  // constructor(private createTransferUseCase: CreateTransferUseCase) {}
   static async handle(req: Request, res: Response) {
     const createTransferUserCase = new CreateTransferUseCase(
       postgresTransferRepository,

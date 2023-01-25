@@ -1,8 +1,9 @@
 import { Account } from "../entities/Account";
+import { AccountDTO } from "../entities/AccountDTO";
 
 export interface AccountsRepository {
-  create(account: Account): Promise<Account>;
-  listAllAccounts(): Promise<Account[]>;
-  findAccountById(id: string): Promise<Account | undefined>;
-  updateAccountData(data: Account): Promise<void>;
+  create(account: AccountDTO): Promise<AccountDTO>;
+  listAllAccounts(): Promise<AccountDTO[]>;
+  findAccountById(id: string): Promise<AccountDTO | undefined>;
+  updateAccountData(data: AccountDTO): Promise<void>;
 }

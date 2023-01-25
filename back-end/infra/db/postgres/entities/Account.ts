@@ -1,22 +1,16 @@
+import { Entity, Column, PrimaryColumn, ManyToMany, JoinTable } from "typeorm";
 import {
-  Column,
-  Entity,
-  EntitySchema,
-  JoinTable,
-  ManyToMany,
-  ManyToOne,
-  PrimaryColumn,
-} from "typeorm";
-import { Account } from "../../../../domain/entities/Account";
+  AccountDTO,
+  AccountProps,
+} from "../../../../domain/entities/AccountDTO";
 import { TransferTypeORM } from "./Transfer";
-@Entity("accounts")
-export class AccountTypeORM {
+
+@Entity("account")
+export class AccountTypeORM implements AccountDTO {
   @PrimaryColumn()
-  id!: string;
+  id: string;
   @Column()
-  ownerName!: string;
+  ownerName: string;
   @Column()
-  balance!: number;
-  @ManyToMany(() => TransferTypeORM)
-  transfers!: TransferTypeORM[];
+  balance: number;
 }

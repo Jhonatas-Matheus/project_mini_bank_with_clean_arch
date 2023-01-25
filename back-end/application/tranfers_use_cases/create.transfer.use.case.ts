@@ -1,6 +1,7 @@
 import { Transfer } from "../../domain/entities/Transfer";
 import { TransfersRepository } from "../../domain/repositories/transfers.repository";
 import { AccountsRepository } from "../../domain/repositories/accounts.repository";
+import { Account } from "../../domain/entities/Account";
 
 type CreateTransferInput = {
   accountFromId: string;
@@ -32,15 +33,17 @@ export class CreateTransferUseCase {
         "Error identifying accounts please make sure the ids are correct."
       );
     }
+    const newAccount1 = new Account(account1, account1.id);
+    const newAccount2 = new Account(account2, account2.id);
     const newTransfer = new Transfer({
-      accountFrom: account1,
-      accountTo: account2,
+      accountFrom: newAccount1,
+      accountTo: newAccount2,
       value,
     });
     newTransfer.makeTransfer();
     await this.repositoryTransfers.create(newTransfer);
-    this.repositoryAccounts.updateAccountData(account1);
-    this.repositoryAccounts.updateAccountData(account2);
+    this.repositoryAccounts.updateAccountData(newAccount1);
+    this.repositoryAccounts.updateAccountData(newAccount2);
     return { message: "Transferência feita com sucesso.", id: newTransfer.id };
   }
 }
