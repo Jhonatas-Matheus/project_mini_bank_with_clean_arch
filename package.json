@@ -1,0 +1,27 @@
+{
+  "name": "mini_bank",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "migration:generate": "typeorm-ts-node-esm migration:generate -d ./infra/db/postgres/data.source.ts ./infra/db/postgres/migrations/default",
+    "migration:run": "typeorm-ts-node-esm -d ./infra/db/postgres/data.source.ts migration:run",
+    "dev": "ts-node-dev --watch node_module ./infra/http/express/src/server.ts",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.16",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4",
+    "vitest": "^0.28.1"
+  },
+  "dependencies": {
+    "@types/pg": "^8.6.6",
+    "dot-env": "^0.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "pg": "^8.8.0",
+    "typeorm": "^0.3.11"
+  }
+}
