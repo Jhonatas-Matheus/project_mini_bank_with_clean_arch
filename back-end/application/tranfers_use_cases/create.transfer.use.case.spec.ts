@@ -24,7 +24,6 @@ describe("Tranfers tests.", () => {
     });
     const allTransfers = await transfersRepo.listAllTransfer();
     const findAccount = await accountRepo.findAccountById(account1.id);
-    // console.log(findAccount);
     expect(allTransfers).toHaveLength(1);
     expect(account1.balance).toStrictEqual(300);
     expect(account2.balance).toStrictEqual(1200);

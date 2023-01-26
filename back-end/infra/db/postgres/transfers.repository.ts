@@ -24,7 +24,6 @@ export class PostgresTransfersRepository implements TransfersRepository {
     throw new Error("Method not implemented.");
   }
   async listAllTransferForSpecificUserById(id: string): Promise<TransferDTO[]> {
-    console.log(id);
     const transfersOfUser = await this.repository.find({
       where: {
         accounts: { id: id },

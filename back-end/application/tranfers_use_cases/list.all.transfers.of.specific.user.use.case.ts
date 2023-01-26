@@ -7,7 +7,6 @@ export class ListAllTransfersOfSpecificUserUseCase {
       await this.transfersRepository.listAllTransferForSpecificUserById(
         accountId
       );
-    console.log(data);
     return data;
   }
 }
